@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root{
+    /* Paleta de cores monocromático */
+    --titulo: #183166;
+    --tabelas: #7EA0EA;
+    --section: #374666;
+    --fundoTela: #386FE6;
+    --navegacao: #2B56B3;
+}
+
+body{
+    background-color: var(--fundoTela);
+}
+nav{
+    background-color: var(--navegacao);
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--fundoTela);
+    max-width: 1200px;
+    min-width: 300px;
+    margin: auto;
+}
+section{
+    width: 100%;
+    background-color: var(--section);
+    margin: auto;
+    margin-bottom: 60px;
+}
+h1{
+    text-align: center;
+    background-color: var(--titulo);
+    width: 100%;
+    color: white;
+}
+.containerFormulario{
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+}
+/* formulario de cadastrar tarefas */
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--tabelas);
+    border-radius: 30px;
+    padding: 10px;
+    max-width: 300px;
+    margin: auto;
+}
+/* tabelas */
+table{
+    margin: auto;
+    max-width: 800px;
+    width: 100%;
+}
+table, td, th, tr {
+    border: 3px solid #000000;
+    color: black;
+    text-align: center;
+}
+td, th{
+    padding: 5px;
+}
+tr {
+    background-color: var(--tabelas);
+  
+}
+
+tr:hover {
+    background-color: var(--navegacao);
+}
+
+button {
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--titulo);
+    border-radius: 10%;
+    color: white;
+    border: none;
+    margin: 5px;
+    white-space: nowrap;
+    max-width: 100%;
+}
+button a {
+    text-decoration: none;
+    color: white;
+}
+label {
+    color: white;
+}
+input {
+    margin-top: 5px;
+    text-align: center;
+}
+/* Função modal */
+.modal {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.containerModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--tabelas);
+    padding: 20px;
+    border-radius: 30px;
+    max-width: 400px;
+    margin: auto;
+}
+.modalEditar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+/* Classes usadas no javascript dinamicamente */
+.tarefas {
+    display: block;
+    margin-top: 20px;
+}
+
+.concluido {
+    text-decoration: line-through;
+}
+
+.checar {
+    cursor: pointer;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+/* footer */
+footer{
+    padding: 20px;
+    background-color: var(--navegacao);
+    text-align: center;
+    color: white;
+}
+footer p{
+    margin: 0;
+}

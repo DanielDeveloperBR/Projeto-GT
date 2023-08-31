@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="arealogin">
+        <div class="login">
+            <div>
+                <img src="img/iconCalendario.png" alt="iconCalendario">
+            </div>
+            <form id="form" action="tarefas.html">
+                <input type="text" name="nome" placeholder="Nome de Usuário" autofocus>
+                <input type="password" name="senha" placeholder="Sua Senha">
+                <input type="submit" value="entrar">
+            </form>
+            <p>Ainda não tem uma conta?<a href="cadastrarUsuario.html">Criar Conta</a></p>
+        </div>
+    </section>
+    <script>
+        const token = localStorage.getItem('token')
+        if (token) {
+            window.location.href = "tarefas.html"
+        }
+        const form = document.getElementById("form");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault()
+            const login = form.nome.value
+            const senha = form.senha.value
+            if (login.trim() === "" || senha.trim() === "") {
+                alert("Preencha os campos")
+                return
+            }
+            try {
+                const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ "nome": login, "senha": senha })
+                })
+                console.log('Login response:', response)
+                if (response.status === 200) {
+                    const data = await response.json()
+                    const token = data.token
+                    console.log('Login successful');
+                    localStorage.setItem('token', token)
+                    window.location.href = "tarefas.html"
+                } else if (response.status === 401) {
+                    console.log('Login failed')
+                }
+            } catch (error) {
+                console.error('Login error:', error)
+            }
+        })
+    </script>
+</body>
+
+</html>
